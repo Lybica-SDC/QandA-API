@@ -1,4 +1,7 @@
+DROP DATABASE IF EXISTS qanda;
 CREATE DATABASE qanda;
+
+\c qanda;
 
 CREATE TABLE questions(
   id SERIAL PRIMARY KEY,
@@ -27,3 +30,7 @@ CREATE TABLE photos(
   answer_id INTEGER REFERENCES answers(id),
   url VARCHAR
 );
+
+\COPY questions FROM 'Users/yeonghwang/Downloads/questions.csv' DELIMITER ',' csv header;
+\COPY answers FROM 'Users/yeonghwang/Downloads/answers.csv' DELIMITER ',' csv header;
+\COPY photos FROM 'Users/yeonghwang/Downloads/answers_photos.csv' DELIMITER ',' csv header;
